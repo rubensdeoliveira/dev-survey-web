@@ -1,4 +1,4 @@
-import { RemoteAuthentication } from "./remote-authentication"
+import { RemoteAuthentication } from './remote-authentication'
 import { HttpPostClientSpy } from '@/data/test/mock-http-client'
 
 type SutTypes = {
@@ -6,16 +6,16 @@ type SutTypes = {
   httpPostClientSpy: HttpPostClientSpy
 }
 
-const makeSut = (url: string = 'any_url'): SutTypes => {
+const makeSut = (url = 'any_url'): SutTypes => {
   const httpPostClientSpy = new HttpPostClientSpy()
   const sut = new RemoteAuthentication(url, httpPostClientSpy)
   return {
-    sut, 
-    httpPostClientSpy
+    sut,
+    httpPostClientSpy,
   }
 }
 
-describe('RemoteAuthentication',  () => {
+describe('RemoteAuthentication', () => {
   test('should call HttpPostClient with correct url', async () => {
     const url = 'any_url'
     const { sut, httpPostClientSpy } = makeSut(url)
